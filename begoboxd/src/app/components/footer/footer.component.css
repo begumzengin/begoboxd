@@ -1,0 +1,15 @@
+footer {
+    font-family: 'Lobster', cursive;
+    background-color: #e86c74;
+    color: #e7e6e4;
+    padding: 20px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.5;
+    margin-top: 20px;
+}
+
+a {
+    color: #6d5f69;
+}

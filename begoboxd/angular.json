@@ -22,7 +22,8 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/assets/i-am-a-crazy-cinephile-cinephile.gif"
             ],
             "styles": [
               "src/styles.css"
