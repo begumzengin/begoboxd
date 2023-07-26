@@ -10,6 +10,7 @@ import { MovieService } from '../../services/movie.service';
 export class MovieListComponent {
   movies: Movie[] = [];
   movie?: Movie;
+  moviePoster?: any;
 
   constructor(private movieService: MovieService) { }
 
@@ -18,12 +19,12 @@ export class MovieListComponent {
     this.movieService.getPopularMovies().subscribe(
       (movie: any) => {
         this.movies = movie.results;
-        //console.log(this.movie); // Display the movie details in the console
       },
       (error) => {
         console.log('Error fetching movie:', error);
       }
     );
   }
+
 
 }

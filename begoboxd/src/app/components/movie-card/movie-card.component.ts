@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { Movie } from '../../movie';
+import { MovieService } from 'src/app/services/movie.service';
 
 @Component({
   selector: 'app-movie-card',
@@ -7,11 +8,15 @@ import { Movie } from '../../movie';
   styleUrls: ['./movie-card.component.css']
 })
 export class MovieCardComponent {
+
+  movieService:MovieService=inject(MovieService);
+  movieImageResponse: any;
+
   @Input() movie: Movie = {
     adult: false,
     backdrop_path: '',
     genre_ids: [],
-    id: 0,
+    id: 346698,
     original_language: '',
     original_title: '',
     overview: '',
@@ -22,5 +27,28 @@ export class MovieCardComponent {
     video: false,
     vote_average: 0,
     vote_count: 0
+  }
+
+  ngOnInit(): void {
+    this.getImage();
+  }
+
+  getImage(){
+    this.movieService.getMoviePoster(this.movie.id).subscribe(
+      (data : any) => {this.movieImageResponse = data},
+    );
+  }
+
+  getMoviePosterUrl(): string {
+    // Check if the response contains posters and get the first poster path if available
+    if (this.movieImageResponse && this.movieImageResponse && this.movieImageResponse.posters.length > 0) {
+
+      const baseUrl = 'https://image.tmdb.org/t/p/original';
+      const posterPath = this.movieImageResponse.posters[0].file_path;
+      return baseUrl + posterPath;
+    } else {
+      // Return a default placeholder image URL or handle no poster case
+      return "https://www.w3schools.com/images/w3schools_green.jpg";
+    }
   }
 }

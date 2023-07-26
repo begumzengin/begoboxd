@@ -1,1 +1,5 @@
-<app-movie-card *ngFor="let movie of movies" [movie]="movie"> {{movie.original_title}}</app-movie-card>
+<div class="grid-container">
+    <app-movie-card *ngFor="let movie of movies" [movie]="movie"> 
+        {{movie.original_title}}
+    </app-movie-card>
+</div>
