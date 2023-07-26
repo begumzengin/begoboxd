@@ -11,6 +11,7 @@ export class MovieCardComponent {
 
   movieService:MovieService=inject(MovieService);
   movieImageResponse: any;
+  @Input() index?: number;
 
   @Input() movie: Movie = {
     adult: false,
@@ -31,6 +32,7 @@ export class MovieCardComponent {
 
   ngOnInit(): void {
     this.getImage();
+    console.log(this.index);
   }
 
   getImage(){

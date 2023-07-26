@@ -47,7 +47,6 @@ export class MovieService {
 
   getMoviePoster(id: number): Observable<any> {
     const url = `https://api.themoviedb.org/3/movie/${id}/images?api_key=${this.apiKey}`;
-    console.log(url);
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.apiKey}`,

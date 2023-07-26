@@ -14,6 +14,8 @@ export class MovieListComponent {
 
   constructor(private movieService: MovieService) { }
 
+  gridData: number[] = [];
+  
   ngOnInit(): void {
     //this.movieService.getMovies().subscribe(movies => this.movies = movies);
     this.movieService.getPopularMovies().subscribe(
