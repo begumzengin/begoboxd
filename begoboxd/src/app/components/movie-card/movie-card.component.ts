@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Movie } from '../../movie';
 
 @Component({
@@ -7,7 +7,7 @@ import { Movie } from '../../movie';
   styleUrls: ['./movie-card.component.css']
 })
 export class MovieCardComponent {
-  movie: Movie = {
+  @Input() movie: Movie = {
     adult: false,
     backdrop_path: '',
     genre_ids: [],
