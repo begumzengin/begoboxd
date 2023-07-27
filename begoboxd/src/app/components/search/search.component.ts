@@ -13,10 +13,10 @@ export class SearchComponent {
   // searchQuery: string = '';
   // searchResults: Movie[] = [];
   movies$!: Observable<Movie[]>;
-  private searchTerms = new Subject<string>();
+  searchTerms = new Subject<string>();
   
   movieService: MovieService=inject(MovieService);
-  
+  //isSearched: boolean = false;
 
   search(term: string): void {
     this.searchTerms.next(term);
