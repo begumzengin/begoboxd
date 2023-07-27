@@ -12,6 +12,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { AboutComponent } from './components/about/about.component';
 import { MovieCardComponent } from './components/movie-card/movie-card.component';
 import { MovieListComponent } from './components/movie-list/movie-list.component';
+import { TvListComponent } from './components/tv-list/tv-list.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { MovieListComponent } from './components/movie-list/movie-list.component
     FooterComponent,
     AboutComponent,
     MovieCardComponent,
-    MovieListComponent
+    MovieListComponent,
+    TvListComponent
   ],
   imports: [
     BrowserModule,
