@@ -8,6 +8,8 @@ import { MovieService } from '../../services/movie.service';
   styleUrls: ['./movie-list.component.css']
 })
 export class MovieListComponent {
+
+  pageTitle: string = 'Popular Movies';
   movies: Movie[] = [];
   movie?: Movie;
   moviePoster?: any;

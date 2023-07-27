@@ -9,7 +9,7 @@ import { TvShow } from 'src/app/tv-show';
   styleUrls: ['./tv-list.component.css']
 })
 export class TvListComponent {
-
+  pageTitle: string = 'Popular TV Shows';
   tvSeries: TvShow[] = [];
   tvService: TvService=inject(TvService);
 
