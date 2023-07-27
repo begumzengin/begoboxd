@@ -1,1 +1,7 @@
-<p>tv-list works!</p>
+<div class="grid-container">
+    <ng-container *ngFor="let tvshow of tvSeries; let i = index">
+      <app-tv-card [tvshow]="tvshow">
+      </app-tv-card>
+    </ng-container>
+  </div>
+  

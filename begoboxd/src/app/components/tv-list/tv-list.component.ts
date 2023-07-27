@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { TVSHOWS } from 'src/app/mock-tv';
+import { TvService } from 'src/app/services/tv.service';
+import { TvShow } from 'src/app/tv-show';
 
 @Component({
   selector: 'app-tv-list',
@@ -7,4 +10,17 @@ import { Component } from '@angular/core';
 })
 export class TvListComponent {
 
+  tvSeries: TvShow[] = [];
+  tvService: TvService=inject(TvService);
+
+  ngOnInit(): void {
+    this.tvService.getPopularTvSeries().subscribe(
+      (tvShow: any) => {
+        this.tvSeries = tvShow.results;
+      },
+      (error) => {
+        console.log('Error fetching tv show:', error);
+      }
+    );
+  }
 }
