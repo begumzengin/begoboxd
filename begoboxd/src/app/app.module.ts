@@ -13,6 +13,7 @@ import { AboutComponent } from './components/about/about.component';
 import { MovieCardComponent } from './components/movie-card/movie-card.component';
 import { MovieListComponent } from './components/movie-list/movie-list.component';
 import { TvListComponent } from './components/tv-list/tv-list.component';
+import { TvCardComponent } from './components/tv-card/tv-card.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { TvListComponent } from './components/tv-list/tv-list.component';
     AboutComponent,
     MovieCardComponent,
     MovieListComponent,
-    TvListComponent
+    TvListComponent,
+    TvCardComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,7 @@
 import { Component, Input, inject } from '@angular/core';
 import { Movie } from '../../movie';
 import { MovieService } from 'src/app/services/movie.service';
+import { TvService } from 'src/app/services/tv.service';
 
 @Component({
   selector: 'app-movie-card',
@@ -9,7 +10,9 @@ import { MovieService } from 'src/app/services/movie.service';
 })
 export class MovieCardComponent {
 
-  movieService:MovieService=inject(MovieService);
+  movieService: MovieService=inject(MovieService);
+  tvService: TvService=inject(TvService);
+  
   movieImageResponse: any;
   @Input() index?: number;
 
