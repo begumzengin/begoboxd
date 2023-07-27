@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Movie } from '../movie';
-import { Observable, of } from 'rxjs';
+import { Observable, catchError, of } from 'rxjs';
 import { MOVIES } from '../mock-movies';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
@@ -53,6 +53,22 @@ export class MovieService {
     });
 
     return this.http.get<any>(url, { headers });
+  }
+
+  searchMovies(term: string): Observable<Movie[]> {
+    if (!term.trim()) {
+      return of([]);
+    }
+
+    const url = `${this.baseUrl}/search/movie?api_key=${this.apiKey}&query=${term}`;
+
+    return this.http.get<{ results: Movie[] }>(url).pipe(
+      catchError(this.handleError<Movie[]>('searchMovies', []))
+    );
+  }
+
+  handleError<T>(arg0: string, arg1: never[]): (err: any, caught: Observable<{ results: Movie[]; }>) => import("rxjs").ObservableInput<any> {
+    throw new Error('Method not implemented.');
   }
 
 }

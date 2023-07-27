@@ -14,6 +14,7 @@ import { MovieCardComponent } from './components/movie-card/movie-card.component
 import { MovieListComponent } from './components/movie-list/movie-list.component';
 import { TvListComponent } from './components/tv-list/tv-list.component';
 import { TvCardComponent } from './components/tv-card/tv-card.component';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { TvCardComponent } from './components/tv-card/tv-card.component';
     MovieCardComponent,
     MovieListComponent,
     TvListComponent,
-    TvCardComponent
+    TvCardComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
