@@ -15,6 +15,7 @@ import { MovieListComponent } from './components/movie-list/movie-list.component
 import { TvListComponent } from './components/tv-list/tv-list.component';
 import { TvCardComponent } from './components/tv-card/tv-card.component';
 import { SearchComponent } from './components/search/search.component';
+import { MovieService } from './services/movie.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import { SearchComponent } from './components/search/search.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [MovieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

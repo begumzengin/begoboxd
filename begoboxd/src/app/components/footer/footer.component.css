@@ -1,6 +1,6 @@
 footer {
-    font-family: 'Lobster', cursive;
-    background-color: #e86c74;
+    font-family: 'Maven Pro', sans-serif;
+    background-color: #55909e;
     color: #e7e6e4;
     padding: 20px;
     text-align: center;
@@ -11,7 +11,7 @@ footer {
 }
 
 a {
-    color: #6d5f69;
+    color: #bddbc3;
 }
 
 .link-container{
