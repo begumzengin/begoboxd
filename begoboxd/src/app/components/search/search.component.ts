@@ -3,6 +3,7 @@ import { Observable, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { Movie } from 'src/app/movie';
 import { MovieService } from 'src/app/services/movie.service';
+import { DropdownModule } from 'primeng/dropdown';
 
 @Component({
   selector: 'app-search',
@@ -14,6 +15,7 @@ export class SearchComponent {
   // searchResults: Movie[] = [];
   movies$!: Observable<Movie[]>;
   searchTerms = new Subject<string>();
+  selectedMovie?: Movie;
   
   movieService: MovieService=inject(MovieService);
   //isSearched: boolean = false;
