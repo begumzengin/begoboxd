@@ -13,3 +13,9 @@ footer {
 a {
     color: #6d5f69;
 }
+
+.link-container{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
