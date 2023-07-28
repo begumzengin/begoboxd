@@ -23,7 +23,8 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "src/assets/i-am-a-crazy-cinephile-cinephile.gif"
+              "src/assets/i-am-a-crazy-cinephile-cinephile.gif",
+              "src/assets/myPopcorn.png"
             ],
             "styles": [
               "src/styles.css"

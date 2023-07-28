@@ -5,6 +5,39 @@ h1 {
     font-family: 'Maven Pro', sans-serif;
 }
 
-form {
+
+/* form {
     text-align: center;
-}
+} */
+
+/* p-menubar {
+    font-family: 'Maven Pro', sans-serif;
+    display: flex;
+    justify-content: center;
+    color: #322747;
+    //background-color: #BDDBC3;
+} */
+
+.menu-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .menu-item-button {
+    padding: 10px 20px;
+    border: 2px #6ab2a4; 
+    border-radius: 5px;
+    text-decoration: none;
+    color: #436b8e; 
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    font-family: 'Maven Pro', sans-serif;
+  }
+  
+  .menu-item-button:hover {
+    background-color: #6ab2a4;
+    color: #FFF; 
+  }
+  
+
+

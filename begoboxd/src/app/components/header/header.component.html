@@ -1,2 +1,23 @@
 <h1>begoboxd</h1>
-<app-search></app-search>
+<!-- <p-menubar [model]="menubarItems">
+    <ng-template pTemplate="start">
+        <img src="/assets/myPopcorn.png" height="45">
+    </ng-template>
+</p-menubar> -->
+<!-- <app-search></app-search> -->
+
+<div class="menu-wrapper">
+    <p-menubar>
+      <ng-template pTemplate="start">
+        <img src="/assets/myPopcorn.png" height="45">
+      </ng-template>
+      <a *ngFor="let item of menubarItems"
+         [routerLink]="item.routerLink"
+         [ngClass]="'menu-item-button'"
+         [attr.title]="item.label">
+        <i [ngClass]="item.icon"></i>
+        {{ item.label }}
+      </a>
+    </p-menubar>
+  </div>
+  

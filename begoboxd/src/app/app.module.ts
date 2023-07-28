@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from '@angular/common/http';
 import { DropdownModule } from 'primeng/dropdown';
+import { AutoCompleteModule } from 'primeng/autocomplete';
+import { MenubarModule } from 'primeng/menubar';
 
 //components
 import { AppComponent } from './app.component';
@@ -35,7 +37,9 @@ import { MovieService } from './services/movie.service';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    DropdownModule
+    DropdownModule,
+    AutoCompleteModule,
+    MenubarModule
   ],
   providers: [MovieService],
   bootstrap: [AppComponent]
