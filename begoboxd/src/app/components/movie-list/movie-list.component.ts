@@ -30,5 +30,8 @@ export class MovieListComponent {
     );
   }
 
+  movieCardClicked(): void {
+    console.log('Movie card clicked');
+  }
 
 }

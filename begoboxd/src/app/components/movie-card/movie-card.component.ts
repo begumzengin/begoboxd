@@ -35,7 +35,6 @@ export class MovieCardComponent {
 
   ngOnInit(): void {
     this.getImage();
-    console.log(this.index);
   }
 
   getImage(){
@@ -56,4 +55,7 @@ export class MovieCardComponent {
       return "https://www.w3schools.com/images/w3schools_green.jpg";
     }
   }
+
+  
+
 }
