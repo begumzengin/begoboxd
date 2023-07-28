@@ -23,6 +23,7 @@ import { TvCardComponent } from './components/tv-card/tv-card.component';
 import { SearchComponent } from './components/search/search.component';
 import { MovieService } from './services/movie.service';
 import { HomeComponent } from './components/home/home.component';
+import { FavoriteComponent } from './components/favorite/favorite.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { HomeComponent } from './components/home/home.component';
     TvListComponent,
     TvCardComponent,
     SearchComponent,
-    HomeComponent
+    HomeComponent,
+    FavoriteComponent
   ],
   imports: [
     BrowserModule,
