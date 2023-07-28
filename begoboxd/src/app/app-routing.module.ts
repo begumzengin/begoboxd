@@ -5,6 +5,7 @@ import { AboutComponent } from './components/about/about.component';
 import { MovieListComponent } from './components/movie-list/movie-list.component';
 import { TvListComponent } from './components/tv-list/tv-list.component';
 import { SearchComponent } from './components/search/search.component';
+import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
   //{path: '', component: MovieListComponent},
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path: 'popular-movies', component: MovieListComponent},
   {path: 'popular-tv', component: TvListComponent},
   { path: 'search', component: SearchComponent },
+  {path: '', component: HomeComponent}
 ];
 
 @NgModule({

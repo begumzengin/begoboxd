@@ -1,7 +1,7 @@
 <div class="tv-card">
     <img [src]="getTvPosterUrl()">
     <div class="tv-info">
-      <h3 class="tv-title">{{ tvshow.name }}</h3>
-      <p class="release-date">First Air Date: {{ tvshow.first_air_date }}</p> 
+      <h3 class="tv-title">{{ tvshow.name | lowercase}}</h3>
+      <p class="release-date">first air date: {{ tvshow.first_air_date }}</p> 
     </div>
   </div>

@@ -7,6 +7,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { DropdownModule } from 'primeng/dropdown';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { MenubarModule } from 'primeng/menubar';
+import { ButtonModule } from 'primeng/button';
+import { ToastModule } from 'primeng/toast';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 //components
 import { AppComponent } from './app.component';
@@ -41,7 +44,10 @@ import { HomeComponent } from './components/home/home.component';
     HttpClientModule,
     DropdownModule,
     AutoCompleteModule,
-    MenubarModule
+    MenubarModule,
+    ButtonModule,
+    ToastModule,
+    ConfirmDialogModule
   ],
   providers: [MovieService],
   bootstrap: [AppComponent]

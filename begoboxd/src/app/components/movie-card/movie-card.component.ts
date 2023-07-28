@@ -12,6 +12,7 @@ export class MovieCardComponent {
 
   movieService: MovieService=inject(MovieService);
   tvService: TvService=inject(TvService);
+  isFavorite: boolean = false;
   
   movieImageResponse: any;
   @Input() index?: number;

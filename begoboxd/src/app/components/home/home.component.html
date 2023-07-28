@@ -1,1 +1,7 @@
-<p>home works!</p>
+<h2>my current favorite movies</h2>
+<div class="grid-container">
+    <ng-container *ngFor="let movie of currentFaveMovies">
+      <app-movie-card [movie]="movie">
+      </app-movie-card>
+    </ng-container>
+</div>
