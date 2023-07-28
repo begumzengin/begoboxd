@@ -1,7 +1,7 @@
 <h2>popular movies</h2>
 <div class="grid-container">
     <ng-container *ngFor="let movie of movies; let i = index">
-      <app-movie-card [movie]="movie" [index]="i" onclick="movieCardClicked()">
+      <app-movie-card [movie]="movie" [index]="i">
         {{ movie.original_title }}
       </app-movie-card>
     </ng-container>

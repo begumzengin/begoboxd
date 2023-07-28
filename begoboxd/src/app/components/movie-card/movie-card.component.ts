@@ -13,7 +13,9 @@ export class MovieCardComponent {
   movieService: MovieService=inject(MovieService);
   tvService: TvService=inject(TvService);
   isFavorite: boolean = false;
-  
+
+  private storageKey = 'user-fave-movie';
+
   movieImageResponse: any;
   @Input() index?: number;
 
@@ -36,6 +38,7 @@ export class MovieCardComponent {
 
   ngOnInit(): void {
     this.getImage();
+    
   }
 
   getImage(){
@@ -57,6 +60,29 @@ export class MovieCardComponent {
     }
   }
 
-  
+  saveFavorite(movie: Movie){
+    let userFaveMovies: Movie[] = [];
+
+    const favoritesJson = localStorage.getItem('favoriteMovies');
+    if (favoritesJson) {
+      userFaveMovies = JSON.parse(favoritesJson);
+    }
+
+    const isMovieInFavorites = userFaveMovies.some((favMovie) => favMovie.id === movie.id);
+
+    if (!isMovieInFavorites) {
+      userFaveMovies.push(movie);
+      localStorage.setItem('favoriteMovies', JSON.stringify(userFaveMovies));
+      console.log('Movie added to favorites:', movie);
+    } else {
+      console.log('Movie is already in favorites:', movie);
+    }
+
+
+    // const movieJson = JSON.stringify(movie);
+    // localStorage.setItem(this.storageKey, movieJson);
+    // console.log('Movie stored in local storage:', movie);
+    
+  }
 
 }

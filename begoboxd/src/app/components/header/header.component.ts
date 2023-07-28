@@ -29,6 +29,11 @@ export class HeaderComponent {
         icon: "pi pi-fw pi-desktop",
       },
       {
+        label: "favorites", 
+        routerLink: "/favorite", 
+        icon: "pi pi-fw pi-heart",
+      },
+      {
         label: "search", 
         routerLink: "/search", 
         icon: "pi pi-fw pi-search",
