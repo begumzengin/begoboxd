@@ -1,3 +1,5 @@
+
+
 <h1>begoboxd</h1>
 <!-- <p-menubar [model]="menubarItems">
     <ng-template pTemplate="start">
@@ -5,11 +7,10 @@
     </ng-template>
 </p-menubar> -->
 <!-- <app-search></app-search> -->
-
 <div class="menu-wrapper">
     <p-menubar>
       <ng-template pTemplate="start">
-        <img src="/assets/myPopcorn.png" height="45">
+        <img src="/assets/myPopcorn.png" height="50">
       </ng-template>
       <a *ngFor="let item of menubarItems"
          [routerLink]="item.routerLink"
@@ -19,5 +20,7 @@
         {{ item.label }}
       </a>
     </p-menubar>
-  </div>
+</div>
+  
+
   

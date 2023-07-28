@@ -14,22 +14,22 @@ export class HeaderComponent {
   ngOnInit() {
     this.menubarItems = [
       { 
-        label: "Home", 
+        label: "home", 
         routerLink: "/", 
         icon: "pi pi-fw pi-home",
       },
       {
-        label: "Popular Movies", 
+        label: "popular movies", 
         routerLink: "/popular-movies", 
         icon: "pi pi-video",
       },
       {
-        label: "Popular TV Shows", 
+        label: "popular tv shows", 
         routerLink: "/popular-tv", 
         icon: "pi pi-fw pi-desktop",
       },
       {
-        label: "Search", 
+        label: "search", 
         routerLink: "/search", 
         icon: "pi pi-fw pi-search",
       }
