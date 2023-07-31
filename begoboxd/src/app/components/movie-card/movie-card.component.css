@@ -42,4 +42,8 @@
     width: 20%;
     height: 20%;
   }
-  
+
+  p-confirmDialog, p-toast{
+    font-family: 'Work Sans', sans-serif;
+  }
+

@@ -10,6 +10,7 @@ import { MenubarModule } from 'primeng/menubar';
 import { ButtonModule } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //components
 import { AppComponent } from './app.component';
@@ -24,6 +25,7 @@ import { SearchComponent } from './components/search/search.component';
 import { MovieService } from './services/movie.service';
 import { HomeComponent } from './components/home/home.component';
 import { FavoriteComponent } from './components/favorite/favorite.component';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -49,9 +51,10 @@ import { FavoriteComponent } from './components/favorite/favorite.component';
     MenubarModule,
     ButtonModule,
     ToastModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    BrowserAnimationsModule
   ],
-  providers: [MovieService],
+  providers: [MovieService, ConfirmationService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

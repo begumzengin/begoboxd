@@ -2,6 +2,7 @@ import { Component, Input, inject } from '@angular/core';
 import { Movie } from '../../movie';
 import { MovieService } from 'src/app/services/movie.service';
 import { TvService } from 'src/app/services/tv.service';
+import { ConfirmationService, MessageService, ConfirmEventType } from 'primeng/api';
 
 @Component({
   selector: 'app-movie-card',
@@ -12,6 +13,9 @@ export class MovieCardComponent {
 
   movieService: MovieService=inject(MovieService);
   tvService: TvService=inject(TvService);
+  confirmationService: ConfirmationService = inject(ConfirmationService);
+  messageService: MessageService = inject(MessageService);
+
   isFavorite: boolean = false;
 
   private storageKey = 'user-fave-movie';
@@ -60,28 +64,42 @@ export class MovieCardComponent {
     }
   }
 
-  saveFavorite(movie: Movie){
-    let userFaveMovies: Movie[] = [];
+  saveFavorite(movie: Movie) {
+    
+    this.confirmationService.confirm({
+      message: 'are you sure you want to add this movie to your favorites?',
+      header: 'confirmation',
+      icon: 'pi pi-exclamation-triangle',
+      acceptLabel: 'yes',
+      rejectLabel: 'no',
+      accept: () => {
+        let userFaveMovies: Movie[] = [];
 
-    const favoritesJson = localStorage.getItem('favoriteMovies');
-    if (favoritesJson) {
-      userFaveMovies = JSON.parse(favoritesJson);
-    }
+        const favoritesJson = localStorage.getItem('favoriteMovies');
+        if (favoritesJson) {
+          userFaveMovies = JSON.parse(favoritesJson);
+        }
 
-    const isMovieInFavorites = userFaveMovies.some((favMovie) => favMovie.id === movie.id);
+        const isMovieInFavorites = userFaveMovies.some((favMovie) => favMovie.id === movie.id);
 
-    if (!isMovieInFavorites) {
-      userFaveMovies.push(movie);
-      localStorage.setItem('favoriteMovies', JSON.stringify(userFaveMovies));
-      console.log('Movie added to favorites:', movie);
-    } else {
-      console.log('Movie is already in favorites:', movie);
-    }
+        if (!isMovieInFavorites) {
+          userFaveMovies.push(movie);
+          localStorage.setItem('favoriteMovies', JSON.stringify(userFaveMovies));
+          console.log('Movie added to favorites:', movie);
+        } else {
+          console.log('Movie is already in favorites:', movie);
+        }
 
+        this.confirmationService.close();
+        this.messageService.add({ severity: 'info', summary: 'confirmed', detail: 'you have added this movie to your favorites' });
+      },
+      reject: (type: any) => {
+        console.log('Movie not added to favorites:', movie);
 
-    // const movieJson = JSON.stringify(movie);
-    // localStorage.setItem(this.storageKey, movieJson);
-    // console.log('Movie stored in local storage:', movie);
+        this.confirmationService.close();
+        this.messageService.add({ severity: 'info', summary: 'confirmed', detail: 'the movie was not added to your favorites' });
+      },
+    });
     
   }
 
