@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Movie } from 'src/app/movie';
+import { ConfirmationService, MessageService, ConfirmEventType } from 'primeng/api';
 
 @Component({
   selector: 'app-favorite',
@@ -7,6 +8,9 @@ import { Movie } from 'src/app/movie';
   styleUrls: ['./favorite.component.css']
 })
 export class FavoriteComponent {
+
+  private confirmationService: ConfirmationService = inject(ConfirmationService);
+  private messageService: MessageService = inject(MessageService);
 
   favoriteMovies: Movie[] = [];
 
@@ -17,5 +21,4 @@ export class FavoriteComponent {
       console.log(this.favoriteMovies);
     }
   }
-
 }

@@ -3,7 +3,7 @@
     <ng-container>
         <app-movie-card *ngFor="let movie of favoriteMovies; let i = index" [index]="i" [movie]="movie"> 
         </app-movie-card>
-      </ng-container>
+    </ng-container>
   <div *ngIf="favoriteMovies.length === 0">
     <p>No favorite movie selected yet.</p>
   </div>
