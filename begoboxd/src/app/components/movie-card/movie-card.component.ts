@@ -178,8 +178,6 @@ export class MovieCardComponent {
         localStorage.getItem('favoriteMovies');
       }
     }
-
-    //localStorage.setItem('favoriteMovies', JSON.stringify(this.userFaveMovies));
   }
 
 }

@@ -8,6 +8,7 @@ import { Movie } from 'src/app/movie';
 })
 export class HomeComponent {
 
+  userName: string = "";
   currentFaveMovies: Movie[] = [
     {
       "adult": false,
