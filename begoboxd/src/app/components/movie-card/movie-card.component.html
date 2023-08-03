@@ -7,11 +7,11 @@
     </div>
     
     <p-toast [style]="{ 
-      'background-color': '#3498db', 
-      'color': '#fff', 
-      'font-size': '16px', 
+      'background-color': '#436b8e', 
+      'color': '#bddbc3', 
+      'font-size': '20px', 
       'border-radius': '8px', 
-      'width': '30vw',
+      'width': '20vw',
      }">
     </p-toast>
 
@@ -21,12 +21,22 @@
           height: '20vh',
           border: '1px solid #434a80', 
           borderRadius: '8px', 
-          fontSize: '18px', 
+          fontSize: '20px', 
           color: '#bddbc3', 
           fontWeight: '300',
           backgroundColor: '#55909e',
         }">
         </p-confirmDialog>
-    <p-button icon="pi pi-star" styleClass="p-button-rounded" (click)="saveFavorite(movie)"></p-button>
+
+
+    <!-- <p-button styleClass="p-button-rounded" (click)="saveFavorite(movie)">
+      <i *ngIf="!isMovieFavorite(movie)" class="pi pi-star"></i>
+      <i *ngIf="isMovieFavorite(movie)" class="pi pi-star-fill"></i>
+    </p-button> -->
+
+    <p-button (click)="toggleFavorite(movie)">
+      <i *ngIf="!isMovieFavorite(movie)" class="pi pi-star"></i>
+      <i *ngIf="isMovieFavorite(movie)" class="pi pi-star-fill"></i>
+    </p-button>
 
   </div>

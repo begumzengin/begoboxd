@@ -12,6 +12,7 @@ export class FavoriteComponent {
   private confirmationService: ConfirmationService = inject(ConfirmationService);
   private messageService: MessageService = inject(MessageService);
 
+  isMovieInFavorites: boolean = false;
   favoriteMovies: Movie[] = [];
 
   ngOnInit(): void {
@@ -21,4 +22,5 @@ export class FavoriteComponent {
       console.log(this.favoriteMovies);
     }
   }
+  
 }

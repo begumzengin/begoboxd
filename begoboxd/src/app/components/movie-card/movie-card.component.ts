@@ -1,4 +1,4 @@
-import { Component, Input, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, inject } from '@angular/core';
 import { Movie } from '../../movie';
 import { MovieService } from 'src/app/services/movie.service';
 import { TvService } from 'src/app/services/tv.service';
@@ -15,10 +15,18 @@ export class MovieCardComponent {
   tvService: TvService=inject(TvService);
   confirmationService: ConfirmationService = inject(ConfirmationService);
   messageService: MessageService = inject(MessageService);
+  cdr: ChangeDetectorRef = inject(ChangeDetectorRef);
 
-  isFavorite: boolean = false;
+  isMovieInFavorites: boolean = false;
+  userFaveMovies: Movie[] = [];
+  favoriteMovies: { [key: number]: boolean } = {};
 
-  private storageKey = 'user-fave-movie';
+  constructor() {
+    const favoritesJson = localStorage.getItem('favoriteMovies');
+    if (favoritesJson) {
+      this.userFaveMovies = JSON.parse(favoritesJson);
+    }
+  }
 
   movieImageResponse: any;
   @Input() index?: number;
@@ -73,27 +81,29 @@ export class MovieCardComponent {
       acceptLabel: 'yes',
       rejectLabel: 'no',
       accept: () => {
-        let userFaveMovies: Movie[] = [];
 
         const favoritesJson = localStorage.getItem('favoriteMovies');
         if (favoritesJson) {
-          userFaveMovies = JSON.parse(favoritesJson);
+          this.userFaveMovies = JSON.parse(favoritesJson);
         }
 
-        const isMovieInFavorites = userFaveMovies.some((favMovie) => favMovie.id === movie.id);
+        this.isMovieInFavorites = this.userFaveMovies.some((favMovie) => favMovie.id === movie.id);
 
-        if (!isMovieInFavorites) {
-          userFaveMovies.push(movie);
-          localStorage.setItem('favoriteMovies', JSON.stringify(userFaveMovies));
+        if (!this.isMovieInFavorites) {
+          this.userFaveMovies.push(movie);
+          localStorage.setItem('favoriteMovies', JSON.stringify(this.userFaveMovies));
           console.log('Movie added to favorites:', movie);
+          this.confirmationService.close();
+          this.messageService.add({ severity: 'info', summary: 'confirmed', detail: 'you have added this movie to your favorites' });
         } else {
           console.log('Movie is already in favorites:', movie);
+          this.confirmationService.close();
+          this.messageService.add({ severity: 'info', summary: '', detail: 'this movie is already in your favorites' });
         }
 
-        this.confirmationService.close();
-        this.messageService.add({ severity: 'info', summary: 'confirmed', detail: 'you have added this movie to your favorites' });
+        
       },
-      reject: (type: any) => {
+      reject: () => {
         console.log('Movie not added to favorites:', movie);
 
         this.confirmationService.close();
@@ -101,6 +111,75 @@ export class MovieCardComponent {
       },
     });
     
+  }
+
+  // isMovieFavorite(movie: Movie): boolean {
+  //   const favoritesJson = JSON.parse(localStorage.getItem('favoriteMovies')!);
+  //   if(favoritesJson.some((favMovie: any) => favMovie.id === movie.id)){
+  //     return true;
+  //   }
+  //   else {
+  //     return false;
+  //   }
+  // }
+
+  isMovieFavorite(movie: Movie): boolean {
+    const favoritesJson = JSON.parse(localStorage.getItem('favoriteMovies')!) ?? [];
+    return favoritesJson.some((favMovie: any) => favMovie.id === movie.id);
+  }  
+
+  removeFavorite(movie: Movie) {
+    this.confirmationService.confirm({
+      message: 'are you sure you want to remove this movie from your favorites?',
+      header: 'confirmation',
+      icon: 'pi pi-exclamation-triangle',
+      acceptLabel: 'yes',
+      rejectLabel: 'no',
+      accept: () => {
+
+        const favoritesJson = localStorage.getItem('favoriteMovies');
+        if (favoritesJson) {
+          this.userFaveMovies = JSON.parse(favoritesJson);
+        }
+
+        this.isMovieInFavorites = this.userFaveMovies.some((favMovie) => favMovie.id === movie.id);
+
+        if (this.isMovieInFavorites) {
+          this.userFaveMovies = this.userFaveMovies.filter((favMovie) => favMovie.id !== movie.id);
+          localStorage.setItem('favoriteMovies', JSON.stringify(this.userFaveMovies));
+          console.log('Movie removed from favorites:', movie);
+          this.confirmationService.close();
+          this.messageService.add({ severity: 'info', summary: 'confirmed', detail: 'you have removed this movie from your favorites' });
+        } else {
+          console.log('Movie is not in favorites:', movie);
+          this.confirmationService.close();
+          this.messageService.add({ severity: 'info', summary: '', detail: 'this movie is not in your favorites' });
+        }
+
+        
+      },
+      reject: () => {
+        console.log('Movie not removed from favorites:', movie);
+
+        this.confirmationService.close();
+        this.messageService.add({ severity: 'info', summary: 'confirmed', detail: 'the movie was not removed from your favorites' });
+      },
+    });
+  }
+
+  toggleFavorite(movie: Movie) {
+
+    if (this.isMovieFavorite(movie)) {
+     this.removeFavorite(movie);
+     localStorage.getItem('favoriteMovies');
+    } else {
+      if (!this.isMovieFavorite(movie)) {
+        this.saveFavorite(movie);
+        localStorage.getItem('favoriteMovies');
+      }
+    }
+
+    //localStorage.setItem('favoriteMovies', JSON.stringify(this.userFaveMovies));
   }
 
 }
