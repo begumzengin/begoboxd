@@ -1,4 +1,4 @@
-<h2>user's favorite movies</h2>
+<h2>{{ userName }}'s favorite movies</h2>
 <div class="grid-container" *ngIf="favoriteMovies.length > 0">
     <ng-container>
         <app-movie-card *ngFor="let movie of favoriteMovies; let i = index" [index]="i" [movie]="movie"> 

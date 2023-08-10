@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Movie } from 'src/app/movie';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +9,10 @@ import { Movie } from 'src/app/movie';
 })
 export class HomeComponent {
 
-  userName: string = "";
+  //private dataService: DataService = inject(DataService);
+  //userName = this.dataService.sharedUserName = '';
+  userName: string = '';
+  
   currentFaveMovies: Movie[] = [
     {
       "adult": false,
@@ -52,5 +56,11 @@ export class HomeComponent {
       "vote_count": 14424
   },
   ];
+
+  submitName() {
+    if (this.userName.trim() !== '') {
+      localStorage.setItem('userName', this.userName);
+    }
+  }
 
 }

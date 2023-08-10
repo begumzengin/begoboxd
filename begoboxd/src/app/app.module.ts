@@ -26,6 +26,7 @@ import { MovieService } from './services/movie.service';
 import { HomeComponent } from './components/home/home.component';
 import { FavoriteComponent } from './components/favorite/favorite.component';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { DataService } from './services/data.service';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,7 @@ import { ConfirmationService, MessageService } from 'primeng/api';
     ConfirmDialogModule,
     BrowserAnimationsModule
   ],
-  providers: [MovieService, ConfirmationService, MessageService],
+  providers: [MovieService, ConfirmationService, MessageService, DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
