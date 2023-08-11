@@ -6,8 +6,15 @@
     </ng-container>
 </div> -->
 
-<h2>welcome to begoboxd!</h2>
-<h3>please enter your name:</h3>
-<input class="center" type="text" [(ngModel)]="userName" />
-<br>
-<button class="center" (click)="submitName()">submit</button>
+
+<div *ngIf="!nameSubmitted; else welcomeMessage">
+  <h2>welcome to begoboxd!</h2>
+  <h3>please enter your name:</h3>
+  <input class="center" type="text" [(ngModel)]="userName" />
+  <br>
+  <button class="center" (click)="submitName()">submit</button>
+</div>
+
+<ng-template #welcomeMessage>
+  <h2>welcome to begoboxd, {{ userName }}!</h2>
+</ng-template>

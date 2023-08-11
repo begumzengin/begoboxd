@@ -11,6 +11,7 @@ import { ButtonModule } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DynamicDialogModule } from 'primeng/dynamicdialog';
 
 //components
 import { AppComponent } from './app.component';
@@ -53,7 +54,8 @@ import { DataService } from './services/data.service';
     ButtonModule,
     ToastModule,
     ConfirmDialogModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    DynamicDialogModule
   ],
   providers: [MovieService, ConfirmationService, MessageService, DataService],
   bootstrap: [AppComponent]

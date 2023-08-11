@@ -12,6 +12,7 @@ export class HomeComponent {
   //private dataService: DataService = inject(DataService);
   //userName = this.dataService.sharedUserName = '';
   userName: string = '';
+  nameSubmitted: boolean = false;
   
   currentFaveMovies: Movie[] = [
     {
@@ -60,6 +61,7 @@ export class HomeComponent {
   submitName() {
     if (this.userName.trim() !== '') {
       localStorage.setItem('userName', this.userName);
+      this.nameSubmitted = true;
     }
   }
 

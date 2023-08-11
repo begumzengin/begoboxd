@@ -35,7 +35,7 @@ export class MovieCardComponent {
     adult: false,
     backdrop_path: '',
     genre_ids: [],
-    id: 346698,
+    id: 150,
     original_language: '',
     original_title: '',
     overview: '',
@@ -46,6 +46,14 @@ export class MovieCardComponent {
     video: false,
     vote_average: 0,
     vote_count: 0
+  }
+
+  getMovie(): Movie {
+    this.movieService.getMovieById(this.movie.id).subscribe(
+      (data: any) => { this.movie = data },
+    );
+
+    return this.movie;
   }
 
   ngOnInit(): void {
@@ -112,16 +120,6 @@ export class MovieCardComponent {
     });
     
   }
-
-  // isMovieFavorite(movie: Movie): boolean {
-  //   const favoritesJson = JSON.parse(localStorage.getItem('favoriteMovies')!);
-  //   if(favoritesJson.some((favMovie: any) => favMovie.id === movie.id)){
-  //     return true;
-  //   }
-  //   else {
-  //     return false;
-  //   }
-  // }
 
   isMovieFavorite(movie: Movie): boolean {
     const favoritesJson = JSON.parse(localStorage.getItem('favoriteMovies')!) ?? [];

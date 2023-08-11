@@ -25,6 +25,16 @@ export class MovieService {
 
   constructor(private http:HttpClient) { }
 
+  getMovieById(id: number): Observable<Movie> {
+    const url = `https://api.themoviedb.org/3/movie/${id}?api_key=7c16770da7981cc9c39b3d15a0a331bb`;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.apiKey}`,
+    });
+
+    return this.http.get<any>(url, { headers });
+  }
+
   getMovies(): Observable<Movie[]> {
 
 

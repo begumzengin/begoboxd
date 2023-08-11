@@ -1,20 +1,5 @@
-<!-- <div id="search-component" class="search-component">
-    <label for="search-box">movie search</label>
-    <input #searchBox id="search-box" (input)="search(searchBox.value)" />
-</div>
-
-<h2>search results:</h2>
-<ul class="search-result"> 
-    <li *ngFor="let movie of movies$ | async">
-        <h3>{{ movie.title }}</h3>
-        <p>{{ movie.overview }}</p>
-    </li>
-</ul>
-   -->
-
-
 <div class="search-component">
-  <label for="search-box">search movies: </label>
+  <label for="search-box">search movies:</label>
   <input #searchBox id="search-box" (input)="search(searchBox.value)" />
 
   <div class="dropdown">
@@ -27,6 +12,7 @@
     </ul>
   </div>
 </div> 
+
 
 
 

@@ -10,6 +10,11 @@ h3 {
     color: #434a80;
 }
 
+p {
+    text-align: center;
+    font-family: "Maven Pro", sans-serif;
+}
+
 .center {
     display: block;
     margin-left: auto;
@@ -30,7 +35,7 @@ button {
     &:hover {
         background-color: white;
         color: #434a80;
-        transition: transform 0.1s ease-in-out;
+        transition: transform 0.2s ease-in-out;
         transform: translateY(-10px);
     }
   }
