@@ -6,12 +6,11 @@
     </ng-container>
 </div> -->
 
-
-<div *ngIf="!nameSubmitted; else welcomeMessage">
+<div *ngIf="!nameSubmitted; else welcomeMessage" class="welcome">
   <h2>welcome to begoboxd!</h2>
   <h3>please enter your name:</h3>
   <input class="center" type="text" [(ngModel)]="userName" />
-  <br>
+  <br />
   <button class="center" (click)="submitName()">submit</button>
 </div>
 
