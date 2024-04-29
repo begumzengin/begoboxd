@@ -8,7 +8,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 const httpOptions = {
   headers: new HttpHeaders({
     accept: 'application/json',
-    Authorization: 'Bearer 7c16770da7981cc9c39b3d15a0a331bb'
+    Authorization: 'Bearer 2bc52123008f1f091b1e60568b13c35b'
   })
 }
 
@@ -19,17 +19,19 @@ const httpOptions = {
 
 export class MovieService {
 
-  private apiUrl = "https://api.themoviedb.org/3/movie/1705?api_key=7c16770da7981cc9c39b3d15a0a331bb";
-  private readonly apiKey = '7c16770da7981cc9c39b3d15a0a331bb';
+  private apiUrl = "https://api.themoviedb.org/3/movie/1705?api_key=2bc52123008f1f091b1e60568b13c35b";
+  private readonly apiKey = '82cbba74b89f3b44e10e23e7f751bbbe';
+  private readonly accessToken = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4MmNiYmE3NGI4OWYzYjQ0ZTEwZTIzZTdmNzUxYmJiZSIsInN1YiI6IjY0YmZjOWM3YjMzMTZiMDBmZjYyNWE5MSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.tTY6-qmc93ur3C_4aD2L_XgqhJQNFuBVXY9Ua-X3BAo'
   private readonly baseUrl = 'https://api.themoviedb.org/3/movie/popular';
 
   constructor(private http:HttpClient) { }
 
   getMovieById(id: number): Observable<Movie> {
-    const url = `https://api.themoviedb.org/3/movie/${id}?api_key=7c16770da7981cc9c39b3d15a0a331bb`;
+    const url = `https://api.themoviedb.org/3/movie/${id}?api_key=2bc52123008f1f091b1e60568b13c35b`;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${this.apiKey}`,
+      Authorization: `Bearer ${this.apiKey}`,
+
     });
 
     return this.http.get<any>(url, { headers });
@@ -47,10 +49,10 @@ export class MovieService {
   }
 
   getPopularMovies(): Observable<Movie[]> {
-    const url = `${this.baseUrl}/?api_key=${this.apiKey}`;
+    const url = `${this.baseUrl}?language=en-US&page=1`;
     const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${this.apiKey}`
+      accept: 'application/json',
+      Authorization: `Bearer ${this.accessToken}`
     });
 
     return this.http.get<Movie[]>(url, { headers });
@@ -60,7 +62,7 @@ export class MovieService {
     const url = `https://api.themoviedb.org/3/movie/${id}/images?api_key=${this.apiKey}`;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${this.apiKey}`,
+      'Authorization': `Bearer ${this.accessToken}`,
     });
 
     return this.http.get<any>(url, { headers });

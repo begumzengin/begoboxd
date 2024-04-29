@@ -9,7 +9,7 @@ import { TvShow } from '../tv-show';
 })
 export class TvService {
 
-  private readonly apiKey = '7c16770da7981cc9c39b3d15a0a331bb';
+  private readonly apiKey = '2bc52123008f1f091b1e60568b13c35b';
   private readonly baseUrl = 'https://api.themoviedb.org/3/tv/popular';
 
   constructor(private http: HttpClient) { }
